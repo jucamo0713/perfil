@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <title>Presentación</title>
+    <style>
+        body {
+            overflow: hidden;
+            margin: 0;
+            font-family: 'Quicksand', sans-serif;
+            color: rgb(255, 255, 255, 0.8);
+        }
+
+        body p,
+        body h1,
+        body h2 {
+            margin: 0;
+        }
+
+        button:focus {
+            outline: 0;
+        }
+
+        /*Scrollbar configuration*/
+        #scroll-container::-webkit-scrollbar {
+            height: 15px;
+            background-color: rgba(114, 107, 107, 0.76);
+            border-radius: 0 0 10px 10px;
+        }
+
+        #scroll-container::-webkit-scrollbar-button {
+            background-color: gray;
+            width: 10px;
+        }
+
+        #scroll-container::-webkit-scrollbar-thumb {
+            background-color: rgb(255, 255, 255, 0.8);
+            width: 10px;
+        }
+
+        /*Containers*/
+        #main-container {
+            background-color: rgb(0, 0, 0, 0.7);
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #scroll-container {
+            display: flex;
+            width: 70vw;
+            height: 80%;
+            background-color: rgb(0, 0, 0, 0.8);
+            border-radius: 10px;
+            box-shadow: 10px 10px 10px rgb(0, 0, 0, 0.5);
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+            font-size: 30px;
+        }
+
+        #info-container {
+            text-align: center;
+            width: 20vw;
+            margin-right: 2vw;
+            height: 80%;
+            background-color: rgb(0, 0, 0, 0.8);
+            border-radius: 10px;
+            box-shadow: 10px 10px 10px rgb(0, 0, 0, 0.5);
+            font-size: 22px;
+            display: flex;
+            flex-flow: column;
+            justify-content: flex-start;
+            box-sizing: border-box;
+            padding-top: 1vw;
+            align-items: center;
+        }
+
+        #arrows-container {
+            width: 100%;
+            height: 90%;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        /*Scroll's elements*/
+        .scroll-element {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex: none;
+            scroll-snap-align: center;
+        }
+
+        #scroll-element-1 {
+            justify-content: center;
+            align-items: center;
+            flex-flow: column;
+            text-align: center;
+        }
+
+        #scroll-element-2 {
+            flex-flow: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        #icon-scroll-1 {
+            background-image: url(https://www.ingenieria.bogota.unal.edu.co/concursodocente_lapaz/images/logosimbolo_central_2c.png);
+            background-size: 100% 100%;
+            width: 30%;
+            height: 60%;
+        }
+
+        .item-scroll2 {
+            background-size: 75%;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 0;
+        }
+
+        #item-scroll2-1 {
+            background-image: url(https://1.bp.blogspot.com/-bjyHpxFgCvs/YFlZZ71FzMI/AAAAAAAAPZU/2NCBd-lN68A2tyHswADUuFS5n6JqfC8pwCLcBGAsYHQ/s16000/Baloncesto.png);
+        }
+
+        #item-scroll2-2 {
+            background-image: url(https://1.bp.blogspot.com/-T9ChTYWk35w/YFlZZ-QIRaI/AAAAAAAAPZM/XvDNL0QkdpYvgqeBbfRwxYaCfgaZD9RdACLcBGAsYHQ/s16000/Book.png);
+        }
+
+        #item-scroll2-3 {
+            background-image: url(https://1.bp.blogspot.com/-7kT2OQxG2r4/YFlZZ4zkgHI/AAAAAAAAPZQ/cd3jMdeo0DUF97-_5zKWh5iS4aBoej_zwCLcBGAsYHQ/s16000/Chess.png);
+        }
+
+        #item-scroll2-4 {
+            background-image: url(https://1.bp.blogspot.com/-Ebwck3gNVLY/YFlZaSDW1JI/AAAAAAAAPZY/rAB4ykG5Ytg8_VirlwuCA0si9ius0_CWQCLcBGAsYHQ/s16000/Games.png);
+        }
+
+        #item-scroll2-5 {
+            background-image: url(https://1.bp.blogspot.com/-h6JlJnjsfRI/YFlZatypjII/AAAAAAAAPZc/7dVCmNzBiecQWHEq5q5t5mT4snG-w-2xQCLcBGAsYHQ/s16000/Music.png);
+        }
+
+        #item-scroll2-6 {
+            background-image: url(https://1.bp.blogspot.com/-KV4ZQ8tg-Ho/YFlZa7K-J3I/AAAAAAAAPZg/TMKktxrlp0Acyc8067NfvQEtvwRMu4dtgCLcBGAsYHQ/s16000/Programaci%25C3%25B3n.png);
+        }
+
+        #item-scroll2-7 {
+            background-image: url(https://www.flaticon.es/svg/vstatic/svg/999/999735.svg?token=exp=1617134137~hmac=e3f4964da6bde2d0fd44a27f71a3008b);
+        }
+
+        #item-scroll2-8 {
+            background-image: url(https://www.flaticon.es/svg/vstatic/svg/1063/1063299.svg?token=exp=1617128843~hmac=ffff1b4084c35a4f4dc155d3be3a6f39);
+        }
+
+        #item-scroll2-9 {
+            background-image: url(https://www.flaticon.es/svg/vstatic/svg/2231/2231549.svg?token=exp=1617128891~hmac=aeaf8904543dbce533150050794b4d3b);
+        }
+
+        .group-3 {
+            width: 100%;
+            height: 48%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        /*Info's elementss*/
+        .arrow {
+            border: 0;
+            max-width: 50%;
+            width: 70px;
+            height: 70px;
+            background-color: rgba(114, 107, 107, 0.76);
+            border-radius: 10px;
+            box-shadow: 10px 10px 10px rgb(0, 0, 0, 0.5);
+            background-position: center;
+            background-size: 80%;
+            background-repeat: no-repeat;
+            cursor: pointer;
+        }
+
+        #left-arrow {
+            background-image: url(https://image.flaticon.com/icons/png/512/271/271218.png);
+        }
+
+        #right-arrow {
+            background-image: url(https://1.bp.blogspot.com/-YfUoRAhIaBE/YFkkyRa_xcI/AAAAAAAAPZE/kgoDpCN-E_8-ZhFFzV1RrmgdFLgNlg3mgCLcBGAsYHQ/s16000/Right-arrow.png);
+        }
+
+        /*Notificaciones*/
+        #arrows-notification {
+            display: none;
+            position: absolute;
+            background-color: rgba(114, 107, 107);
+            width: 430px;
+            height: max-content;
+            box-sizing: border-box;
+            padding: 5px;
+            border-radius: 5px;
+            top: 10px;
+            left: 100vw;
+            color: black;
+        }
+
+        #not-container-2 {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(0, 0, 0, 0.5);
+
+        }
+
+        #notificacion-plantilla {
+            width: 50%;
+            height: max-content;
+            background-color: gray;
+            border-radius: 10px;
+            box-shadow: 10px 10px 10px rgba(114, 107, 107, 0.76);
+        }
+
+        .animated {
+            display: block !important;
+            animation: arrow-notification 6s ease-out;
+        }
+
+        #notificacion-plantilla-header {
+            width: 100%;
+            height: 60px;
+            border-radius: 10px 10px 0 0;
+            background-color: rgb(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        #button-close-notification {
+            width: 20%;
+            height: 70%;
+            background-color: rgb(255, 255, 255, 0.8);
+            color: black;
+            border: 0;
+            border-radius: 2px;
+            font-size: 20px;
+        }
+
+        #main-notificacion-plantilla {
+            color: black;
+            font-size: 30px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px;
+        }
+
+        /*Animaciones*/
+        @keyframes arrow-notification {
+            0% {
+                left: calc(100vw - 0px);
+            }
+
+            20% {
+                left: calc(100vw - 425px);
+            }
+
+            50% {
+                left: calc(100vw - 425px);
+            }
+        }
+
+        @media(max-width:1035px) {
+            #info-container {
+                display: none;
+            }
+
+            #icon-scroll-1 {
+                width: 60%;
+            }
+
+            #notificacion-plantilla {
+                width: 98%;
+                height: 50%;
+                background-color: gray;
+                border-radius: 10px;
+                box-shadow: 10px 10px 10px rgba(114, 107, 107, 0.76);
+            }
+        }
+
+        @media(max-width: 700px) {
+            .item-scroll2 {
+                width: 110px;
+                height: 110px;
+            }
+        }
+
+        /*Media queris*/
+        @media(max-width:450px) {
+
+            /*Containers*/
+            #main-container {
+                flex-flow: column;
+                height: 100vh;
+            }
+
+            #scroll-container {
+                width: 95vw;
+                height: 50vh;
+            }
+
+            /*Scroll's elements*/
+            #icon-scroll-1 {
+                background-image: url("https://www.ingenieria.bogota.unal.edu.co/concursodocente_lapaz/images/logosimbolo_central_2c.png");
+                background-size: 100% 100%;
+                width: 50%;
+                height: 60%;
+            }
+
+            .item-scroll2 {
+                width: 80px;
+                height: 80px;
+            }
+
+            /*Scrollbar*/
+            #scroll-container::-webkit-scrollbar {
+                height: 0px;
+            }
+        }
+    </style>
+</head>
+<script>
+    function arrow_click() {
+        let html_L = document.getElementById('left-arrow');
+        let html_R = document.getElementById('right-arrow');
+        if (!html_L.disabled && !html_R.disabled) {
+            html_R.disabled = true;
+            html_L.disabled = true;
+            notify = document.getElementById('arrows-notification');
+            notify.className += 'animated';
+            setTimeout(function () {
+                notify.className = '';
+                html_R.disabled = false;
+                html_L.disabled = false;
+            }, 6000);
+        }
+    }
+    function notificacion_gustos(prop) {
+        array = {
+            t1: {
+                titulo: "Baloncesto",
+                descripcion: "El primer deporte que practique, con el que me divierto mucho y disfruto con mis amigos."
+            },
+            t2: {
+                titulo: "Agedrez",
+                descripcion: "Un pasatiempo personal el cual disfruto y además gozo de su elegancia."
+            },
+            t3: {
+                titulo: "Video juegos",
+                descripcion: "Principalmente los retro, o juegos de estrategia,tales como pokemon, megaman, age of empires, etc. Un escape de la realidad y una gran fuente de entretenimiento."
+            },
+            t4: {
+                titulo: "Música",
+                descripcion: "Fuente de inspiración, concentración, conocimiento, y análisis, sencillamente un mundo distinto."
+            },
+            t5: {
+                titulo: "Lectura",
+                descripcion: "nU mundo de inmersión total para conocer historias."
+            },
+            t6: {
+                titulo: "Programación",
+                descripcion: "Mi profesión y afición, un gusto que me a traído muchas alegrías."
+            },
+            t7: {
+                titulo: "Graduación",
+                descripcion: "Graduarme de la mejor manera posible, con las mejores notas que pueda obtener."
+            },
+            t8: {
+                titulo: "Trabajo",
+                descripcion: "Trabajar en proyectos independientes, para no tener que laborar para nadie y vivir de eso en el futuro."
+            },
+            t9: {
+                titulo: "Universidad",
+                descripcion: "Pasarla bien en la universidad, haciendo amigos y disfrutandola al máximo."
+            }
+        }
+        document.getElementById("not-container-2").style.display = 'flex';
+        if (prop == 1) {
+            document.getElementById("title-notification").innerHTML = array.t1.titulo;
+            document.getElementById("Contain-notificacion-plantilla").innerHTML = array.t1.descripcion;
+        } else if (prop == 2) {
+            document.getElementById("title-notification").innerHTML = array.t2.titulo;
+            document.getElementById("Contain-notificacion-plantilla").innerHTML = array.t2.descripcion;
+        } else if (prop == 3) {
+            document.getElementById("title-notification").innerHTML = array.t3.titulo;
+            document.getElementById("Contain-notificacion-plantilla").innerHTML = array.t3.descripcion;
+        } else if (prop == 4) {
+            document.getElementById("title-notification").innerHTML = array.t4.titulo;
+            document.getElementById("Contain-notificacion-plantilla").innerHTML = array.t4.descripcion;
+        } else if (prop == 5) {
+            document.getElementById("title-notification").innerHTML = array.t5.titulo;
+            document.getElementById("Contain-notificacion-plantilla").innerHTML = array.t5.descripcion;
+        } else if (prop == 6) {
+            document.getElementById("title-notification").innerHTML = array.t6.titulo;
+            document.getElementById("Contain-notificacion-plantilla").innerHTML = array.t6.descripcion;
+        } else if (prop == 7) {
+            document.getElementById("title-notification").innerHTML = array.t7.titulo;
+            document.getElementById("Contain-notificacion-plantilla").innerHTML = array.t7.descripcion;
+        } else if (prop == 8) {
+            document.getElementById("title-notification").innerHTML = array.t8.titulo;
+            document.getElementById("Contain-notificacion-plantilla").innerHTML = array.t8.descripcion;
+        } else if (prop == 9) {
+            document.getElementById("title-notification").innerHTML = array.t9.titulo;
+            document.getElementById("Contain-notificacion-plantilla").innerHTML = array.t9.descripcion;
+        }
+    }
+    function notificacion_gustos_close() {
+        document.getElementById("not-container-2").style.display = "none";
+        document.getElementById("title-notification").innerHTML = "";
+        document.getElementById("Contain-notificacion-plantilla") = "";
+    }
+</script>
+
+<body>
+    <div id="not-container-2">
+        <div id="notificacion-plantilla">
+            <div id="notificacion-plantilla-header">
+                <p id="title-notification"></p>
+                <button id="button-close-notification" onclick='notificacion_gustos_close();'>Cerrar</button>
+            </div>
+            <div id="main-notificacion-plantilla">
+                <p id="Contain-notificacion-plantilla">
+
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="main-container">
+        <section id="info-container">
+            <p>Utiliza el teclado</p>
+            <div id="arrows-container">
+                <button id="left-arrow" class="arrow" onclick='arrow_click();'></button>
+                <button id="right-arrow" class="arrow" onclick='arrow_click()'></button>
+            </div>
+            <div id="arrows-notification">
+                <p>Utiliza esta flecha para mover el banner</p>
+            </div>
+        </section>
+        <section id="scroll-container">
+            <div id="scroll-element-1" class="scroll-element">
+                <div id="icon-scroll-1"></div>
+                <p>Ingeniería de sistemas</p>
+            </div>
+            <div id="scroll-element-2" class="scroll-element">
+                <div id="group1-scroll-2" class="group-3">
+                    <button class="item-scroll2" id="item-scroll2-1" onclick='notificacion_gustos(1);'></button>
+                    <button class="item-scroll2" id="item-scroll2-2" onclick='notificacion_gustos(2);'></button>
+                    <button class="item-scroll2" id="item-scroll2-3" onclick='notificacion_gustos(3);'></button>
+                </div>
+                <div id="group2-scroll-2" class="group-3">
+                    <button class="item-scroll2" id="item-scroll2-4" onclick='notificacion_gustos(4);'></button>
+                    <button class="item-scroll2" id="item-scroll2-5" onclick='notificacion_gustos(5);'></button>
+                    <button class="item-scroll2" id="item-scroll2-6" onclick='notificacion_gustos(6);'></button>
+                </div>
+            </div>
+            <div id="scroll-element-2" class="scroll-element">
+                <div id="group1-scroll-2" class="group-3">
+                    <button class="item-scroll2" id="item-scroll2-7" onclick='notificacion_gustos(7);'></button>
+                    <button class="item-scroll2" id="item-scroll2-8" onclick='notificacion_gustos(8);'></button>
+                    <button class="item-scroll2" id="item-scroll2-9" onclick='notificacion_gustos(9);'></button>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
